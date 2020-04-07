@@ -1,0 +1,9 @@
+numpy
+torch
+torchvision
+cv2
+requests
+bs4
+selenium
+tqdm
+matplotlib

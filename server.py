@@ -1,1 +1,3 @@
-print("Hello butt face baby eating obrian")
+import numpy
+
+print(numpy.random.randn(3))
