@@ -3,6 +3,10 @@ from bs4 import BeautifulSoup
 import selenium
 
 
+# https://towardsdatascience.com/image-scraping-with-python-a96feda8af2d
+
+# correctly formatted goat search: https://www.google.com/search?q=goat&tbm=isch&safe=off&tbs=isz:m
+
 def fetch_image_urls(query, max_links_to_fetch, wd, sleep_between_interactions=1):
     def scroll_to_end(wd):
         wd.execute_script("window.scrollTo(0, document.body.scrollHeight);")
