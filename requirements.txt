@@ -1,9 +1,7 @@
 numpy
 torch
 torchvision
-cv2
+opencv-python
 requests
-bs4
-selenium
 tqdm
 matplotlib
