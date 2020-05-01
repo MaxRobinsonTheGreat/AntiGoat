@@ -1,13 +1,12 @@
 import requests
-import matplotlib.pyplot as plt
 from PIL import Image
 from io import BytesIO
 import cv2
 import numpy as np
-import io
 from tqdm import tqdm
+import pickle
 
-def search(search_term, max_images=50):
+def bing_search(search_term, max_images=50):
 	subscription_key = "SEE DISCORD FOR SUBSCRIPTION KEY"
 	assert subscription_key is not "SEE DISCORD FOR SUBSCRIPTION KEY"
 	search_url = "https://api.cognitive.microsoft.com/bing/v7.0/images/search"
@@ -52,7 +51,7 @@ def download_urls(image_urls, dir="goats", offset=0):
 
 		try:
 			image_content = requests.get(url).content
-			image_file = io.BytesIO(image_content)
+			image_file = BytesIO(image_content)
 			image = Image.open(image_file).convert('RGB')
 			image = np.array(image)
 			image = cv2.resize(image, (64, 64))
@@ -66,12 +65,46 @@ def download_urls(image_urls, dir="goats", offset=0):
 	print(f"Finished downloading {i} images. {failed_saves} failed to save.")
 	return i
 
-# download goat images
-# download_urls(search("goat -cow -pig -sheep", 500))
+# **********************************************
+### BING SEARCH - use these sparingly. I am only allowed 1000 total api calls this month
+# search and save goat urls
+# goats = bing_search("goat", 400)
+# goats.update(bing_search("white goat", 200))
+# goats.update(bing_search("brown goat", 100))
+# goats.update(bing_search("black goat", 100))
+# goats.update(bing_search("billy goat", 100))
+# with open('./data/goat_urls.data', 'wb') as filehandle:
+#     pickle.dump(list(goats), filehandle)
 
-# download non goat images
-# offset = download_urls(search("pig -goat", 100), "nongoats")
-# offset = download_urls(search("cow -goat", 100), "nongoats", offset)
-# offset = download_urls(search("sheep -goat", 200), "nongoats", offset)
-# offset = download_urls(search("farm -goat", 50), "nongoats", offset)
-# offset = download_urls(search("chicken -goat", 50), "nongoats", offset)
+# search and save non goat urls
+# nongoats = search("pig -goat", 100)
+# nongoats.update(search("cow -goat", 100))
+# nongoats.update(search("sheep -goat", 500))
+# nongoats.update(search("farm -goat", 100))
+# nongoats.update(search("chicken -goat", 100))
+# with open('./data/nongoat_urls.data', 'wb') as filehandle:
+#     pickle.dump(list(nongoats), filehandle)
+
+
+# **********************************************
+### IMAGE DOWNLOADS - use as much as you want
+# download goat images
+# with open('./data/goat_urls.data', 'rb') as filehandle:
+# 	goat_urls = pickle.load(filehandle)
+# 	download_urls(goat_urls)
+
+# download nongoat images
+# with open('./data/nongoat_urls.data', 'rb') as filehandle:
+#     goat_urls = pickle.load(filehandle)
+#     download_urls(goat_urls, "nongoats")
+
+
+# **********************************************
+### UPDATE SEARCH - use sparingly
+# old_urls = pickle.load(open('./data/nongoat_urls.data', 'rb'))
+# old_urls = set(old_urls)
+# old_urls.update(bing_search("white sheep", 100))
+# old_urls.update(bing_search("lamb animal", 200))
+# old_urls.update(bing_search("brown sheep", 200))
+# print(len(old_urls))
+# pickle.dump(list(old_urls), open('./data/nongoat_urls.data', 'wb'))
