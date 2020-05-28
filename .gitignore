@@ -2,5 +2,6 @@ data/
 .vscode/
 .ipynb_checkpoints/
 venv/
+pycache/
 saved_models/*
 !saved_models/production

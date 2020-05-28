@@ -11,3 +11,6 @@ class GoatDetector(nn.Module):
 
     def forward(self, x):
         return self.sig(self.final_layer(self.resnet(x)))
+
+# discovered by threshold searching
+threshold = 0.76

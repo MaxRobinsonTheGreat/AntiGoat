@@ -91,6 +91,7 @@ def download_urls(image_urls, dir="goats", offset=0):
 # download goat images
 # with open('./data/goat_urls.data', 'rb') as filehandle:
 # 	goat_urls = pickle.load(filehandle)
+# 	print(len(goat_urls))
 # 	download_urls(goat_urls)
 
 # download nongoat images
@@ -103,8 +104,23 @@ def download_urls(image_urls, dir="goats", offset=0):
 ### UPDATE SEARCH - use sparingly
 # old_urls = pickle.load(open('./data/nongoat_urls.data', 'rb'))
 # old_urls = set(old_urls)
-# old_urls.update(bing_search("white sheep", 100))
-# old_urls.update(bing_search("lamb animal", 200))
-# old_urls.update(bing_search("brown sheep", 200))
+# new_urls = set([])
+# new_urls.update(bing_search("selfie", 100))
+# new_urls.update(bing_search("city", 20))
+# new_urls.update(bing_search("town", 10))
+# new_urls.update(bing_search("apartment", 20))
+# new_urls.update(bing_search("truck", 10))
+# old_urls.update(new_urls)
 # print(len(old_urls))
 # pickle.dump(list(old_urls), open('./data/nongoat_urls.data', 'wb'))
+# download_urls(list(new_urls), dir="nongoats", offset=1033)
+
+
+# old_urls = pickle.load(open('./data/goat_urls.data', 'rb'))
+# old_urls = set(old_urls)
+# orig_len = len(old_urls)
+# old_urls.update(bing_search("adult goat", 200))
+# old_urls.update(bing_search("baby goat", 200))
+# old_urls.update(bing_search("spotted goat", 200))
+# print(len(old_urls) - orig_len, "added.")
+# pickle.dump(list(old_urls), open('./data/goat_urls.data', 'wb'))

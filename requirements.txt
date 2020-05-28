@@ -7,3 +7,4 @@ tqdm
 matplotlib
 pickle
 PIL
+flask

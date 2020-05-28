@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>Anti Goat</title>
+        <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+        <script src="./script.js"></script>
+        <link rel="icon" type="image/png" href="data:image/png;base64,iVBORw0KGgo=">
+        <style>
+            body {background-color: powderblue;}
+            
+            img {
+                display: block;
+                height: auto;
+                width: auto;
+            }
+
+            .container {
+                width: 150px;
+                height: 100px;
+                background-image: url("http://i.stack.imgur.com/2OrtT.jpg");
+                background-size: cover;
+                background-repeat: no-repeat;
+                background-position: 50% 50%;
+            }
+        </style>
+    </head>
+    <body>
+        <h1>Upload an image and we will detect if it contains a goat</h1>
+        <div>
+            <img id="uploaded_image" src="/static/goat1.jpg" alt="Uploaded image" />
+        </div>
+        <input type="file" id="file" name="file" onchange="readURL(this);" multiple />
+        <button id="upload">Upload</button>
+        <p id="msg"></p>
+
+    </body>
+</html>
