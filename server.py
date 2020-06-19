@@ -14,7 +14,7 @@ model = model.eval()
 ALLOWED_EXTENSIONS = {'png', 'jpg', 'jpeg'}
 
 app = Flask(__name__)
-# app.secret_key = 'super secret key'
+app.secret_key = 'super secret key'
 
 
 def rgba_to_rgb(im):

@@ -1,6 +1,7 @@
 $(document).ready(function (e) {
     $('#upload').on('click', function () {
         var file_data = $('#file').prop('files')[0];
+        console.log(file_data);
         var form_data = new FormData();
         form_data.append('file', file_data);
         $.ajax({
